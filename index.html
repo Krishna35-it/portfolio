@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Krishna Raj S — Portfolio</title>
+  <meta name="description" content="Krishna Raj S — Aspiring Data Scientist / AI-ML Engineer. Portfolio with projects, resume download and contact." />
+  <meta name="author" content="Krishna Raj S" />
+
+  <!-- Simple, professional font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f1724; /* deep navy background for contrast */
+      --card: #0b1220;
+      --muted: #98a0b3;
+      --accent: #0ea5a4; /* teal/blue accent — change if you want */
+      --glass: rgba(255,255,255,0.03);
+      --radius: 12px;
+      --max-width: 1100px;
+      color-scheme: dark;
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #071029 0%, #071826 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:60px;
+    }
+
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Page layout */
+    .wrap{max-width:var(--max-width); margin:32px auto; padding:20px;}
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:28px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:52px; height:52px;
+      background:linear-gradient(135deg, rgba(14,165,164,0.12), rgba(19,78,70,0.06));
+      border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:18px; color:var(--accent);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+    }
+    .title {line-height:1}
+    .title h1{margin:0;font-size:18px; font-weight:700}
+    .title p{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex; gap:8px; align-items:center}
+    .nav-link{
+      padding:8px 12px; border-radius:10px; font-size:14px; color:var(--muted);
+      transition:all .18s ease; border:1px solid transparent;
+    }
+    .nav-link:focus, .nav-link:hover{
+      color:var(--accent);
+      background:var(--glass);
+      outline:none; border-color: rgba(255,255,255,0.03);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid; grid-template-columns: 1fr; gap:18px;
+      align-items:center;
+      padding:20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    }
+
+    .intro h2{margin:4px 0 6px; font-size:28px}
+    .intro p.lead{margin:0 0 12px; color:var(--muted); max-width:70ch}
+    .cta-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:10px; cursor:pointer; border:0;
+      background:linear-gradient(90deg, var(--accent), #06b6b4);
+      color:#04202a; font-weight:600;
+      box-shadow: 0 6px 18px rgba(14,165,164,0.12);
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.ghost{
+      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.03)
+    }
+
+    /* Grid sections */
+    .sections{margin-top:18px; display:grid; gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.003)); padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.02)}
+    .cards-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:12px}
+
+    /* Skills */
+    .skills{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .skill{background:rgba(255,255,255,0.03); padding:8px 10px; border-radius:999px; font-size:13px; color:var(--muted); border:1px solid rgba(255,255,255,0.02)}
+
+    /* Projects */
+    .project-card{display:flex; gap:12px; padding:12px; align-items:flex-start}
+    .project-thumb{min-width:110px; height:70px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+    .project-title{font-weight:600; margin:0 0 6px; font-size:15px}
+    .project-desc{margin:0;color:var(--muted);font-size:13px}
+    .tag-row{margin-top:8px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag{font-size:12px; padding:6px 8px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted); border:1px solid rgba(255,255,255,0.02)}
+    a.tag {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    a.tag:hover {
+      background: #08918f;   /* slightly darker on hover */
+      border-color: #08918f;
+    }
+
+    /* More Projects */
+    .more-list{display:flex; flex-direction:column; gap:10px}
+    .more-item{display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px; background:rgba(255,255,255,0.01)}
+
+    /* Education & Contact */
+    .edu-item{margin-bottom:8px}
+    form .field{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
+    input,textarea,select{
+      padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.03); background:transparent; color:inherit; resize:vertical;
+    }
+    textarea{min-height:110px}
+    .muted{color:var(--muted); font-size:13px}
+
+    footer{margin-top:18px; text-align:center; color:var(--muted); font-size:13px}
+
+    /* Focus visible for keyboard nav */
+    :focus{outline:3px solid rgba(14,165,164,0.12); outline-offset:2px}
+
+    /* Responsive tweaks */
+    @media(min-width:900px){
+      .hero{grid-template-columns: 1fr 360px}
+      .intro h2{font-size:34px}
+    }
+
+    /* subtle animations */
+    .fade-in{opacity:0; transform:translateY(8px); animation:fadeIn .6s ease forwards}
+    @keyframes fadeIn{to{opacity:1; transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
+
+  <div class="wrap" id="top">
+
+    <!-- Header -->
+    <header class="fade-in" style="animation-delay:.05s">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">KR</div>
+        <div class="title">
+          <h1>Krishna Raj S</h1>
+          <p>Aspiring Data Scientist / AI-ML Engineer — Coimbatore</p>
+        </div>
+      </div>
+
+      <nav role="navigation" aria-label="Main Navigation">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#education">Education</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <main id="main" class="hero" role="main" aria-labelledby="hero-heading">
+      <section class="intro" style="padding-right:10px">
+        <h2 id="hero-heading">Hi — I'm Krishna. I build data & ML projects that solve real problems.</h2>
+        <p class="lead">Aspiring Data Scientist with hands-on projects in ML, computer vision, and LLM-based applications. I build reproducible projects using Python, Streamlit, Power BI and deploy demos so stakeholders can explore results.</p>
+
+        <div class="cta-row" role="group" aria-label="Primary actions">
+          <!-- Resume download -->
+          <a class="btn" href="https://drive.google.com/uc?export=download&id=1pbQib8tt6ieakH1c5QnBZwOGlBck2cJg" download target="_blank" rel="noopener noreferrer">
+            ⬇️ Download Resume
+          </a>
+
+          <!-- Mailto fallback -->
+          <a class="btn ghost" href="mailto:krishnarj2711@gmail.com">✉️ Email Me</a>
+        </div>
+
+        <!-- Quick contact & links -->
+        <div style="margin-top:12px">
+          <span class="muted">Connect:</span>
+          <a href="https://github.com/Krishna35-it" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a> •
+          <a href="https://www.linkedin.com/in/krishna-raj-9478b333b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </section>
+
+      <!-- Right column: quick stats / skills -->
+      <aside style="padding-left:10px;">
+        <div class="card" aria-label="Skills & contact">
+          <h3 style="margin:0 0 6px">Skills</h3>
+          <p class="muted" style="margin:0 0 8px">Core tools & technologies — editable</p>
+          <div class="skills" id="skills-list">
+            <!-- editable skills -->
+            <span class="skill">Python</span>
+            <span class="skill">Pandas</span>
+            <span class="skill">NumPy</span>
+            <span class="skill">scikit-learn</span>
+            <span class="skill">TensorFlow</span>
+            <span class="skill">SQL</span>
+            <span class="skill">Power BI</span>
+            <span class="skill">Streamlit</span>
+            <span class="skill">Keras</span>
+            <span class="skill">Git</span>
+          </div>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.02); margin:12px 0">
+
+          <div>
+            <p class="muted" style="margin:0 0 6px">Contact</p>
+            <p style="margin:0 0 6px; font-weight:600">krishnarj2711@gmail.com</p>
+            <p class="muted" style="margin:0">Phone: (shown on resume)</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Sections -->
+    <div class="sections">
+
+      <!-- Projects -->
+      <section id="projects" class="card fade-in" style="animation-delay:.08s" aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Selected Projects</h2>
+        <p class="muted">Highlighted work — click for code or demo</p>
+
+        <div class="cards-grid" style="margin-top:12px">
+
+          <!-- Project 1: Loan Approval Prediction -->
+          <article class="card project-card" tabindex="0" aria-labelledby="p1-title">
+            <div class="project-thumb" aria-hidden="true">
+              <!-- simple SVG placeholder -->
+              <svg width="110" height="70" viewBox="0 0 110 70" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Loan model">
+                <rect width="110" height="70" rx="8" fill="#001017"/>
+                <g fill="#0ea5a4" font-family="Inter" font-size="10">
+                  <text x="10" y="22">Loan</text>
+                  <text x="10" y="38">Approval</text>
+                  <text x="10" y="52">Model</text>
+                </g>
+              </svg>
+
+            </div>
+
+            <div style="flex:1">
+              <h3 id="p1-title" class="project-title">Loan Approval Prediction</h3>
+              <p class="project-desc">Binary classification model predicting loan approval using applicant & financial features. Includes feature engineering & model explainability.</p>
+
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">Feature Engineering</span>
+                <a class="tag" href="https://github.com/Krishna35-it/Loan_Approval_Prediction" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Multiclass Fish -->
+          <article class="card project-card" tabindex="0" aria-labelledby="p2-title">
+            <div class="project-thumb" aria-hidden="true">
+              <svg width="110" height="70" viewBox="0 0 110 70" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fish classification">
+                <rect width="110" height="70" rx="8" fill="#001017"/>
+                <g fill="#0ea5a4" font-family="Inter" font-size="10">
+                  <text x="10" y="22">Fish</text>
+                  <text x="10" y="38">Image</text>
+                  <text x="10" y="52">Classification</text>
+                </g>
+              </svg>
+            </div>
+
+            <div style="flex:1">
+              <h3 id="p2-title" class="project-title">Multiclass Fish Image Classification</h3>
+              <p class="project-desc">Trained MobileNet-based classifier with data augmentation and a Streamlit demo for predictions and confidence scores.</p>
+
+              <div class="tag-row">
+                <span class="tag">TensorFlow</span>
+                <span class="tag">MobileNet</span>
+                <span class="tag">Data Augmentation</span>
+                <a class="tag" href="https://github.com/Krishna35-it/Multiclass-Fish-Image-Classification" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: QA Chatbot LLM -->
+          <article class="card project-card" tabindex="0" aria-labelledby="p3-title">
+            <div class="project-thumb" aria-hidden="true">
+              <svg width="110" height="70" viewBox="0 0 110 70" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QA Chatbot">
+                <rect width="110" height="70" rx="8" fill="#001017"/>
+                <g fill="#0ea5a4" font-family="Inter" font-size="10">
+                  <text x="10" y="22">QA</text>
+                  <text x="10" y="38">Chatbot</text>
+                  <text x="10" y="52">LLM</text>
+                </g>
+              </svg>
+            </div>
+
+            <div style="flex:1">
+              <h3 id="p3-title" class="project-title">QA Chatbot (LLM)</h3>
+              <p class="project-desc">Retrieval-augmented generative chatbot using LangChain and document embeddings — supports PDF chat and conversational RAG.</p>
+
+              <div class="tag-row">
+                <span class="tag">LangChain</span>
+                <span class="tag">FAISS</span>
+                <span class="tag">TensorFlow 2.19</span>
+                <a class="tag" href="https://github.com/Krishna35-it/QA-Chatbot-Opensource-LLM" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- More projects -->
+        <div style="margin-top:14px">
+          <h4 style="margin:0 0 8px">More Projects</h4>
+          <div class="more-list">
+            <div class="more-item">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center">📊</div>
+              <div style="flex:1">
+                <div style="font-weight:600">PhonePe Transaction Insights</div>
+                <div class="muted" style="font-size:13px">Power BI dashboards analysing transactional trends across states and categories.</div>
+              </div>
+              <div><a class="tag" href="https://github.com/Krishna35-it/PhonePe-Transaction_Insights" target="_blank" rel="noopener noreferrer">Code</a></div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="card fade-in" style="animation-delay:.11s" aria-labelledby="edu-heading">
+        <h2 id="edu-heading">Education</h2>
+        <div class="edu-item">
+          <strong>BE, Computer Science</strong> — United Institute of Technology, Coimbatore (2017)
+        </div>
+        <div class="edu-item">
+          <strong>HCL GUVI-IITM Master Data Science Program</strong> — Completed
+          <div class="muted" style="margin-top:6px">Certificate: <a href="https://www.guvi.in/certificate?id=89a4S3g861w174BY84" target="_blank" rel="noopener noreferrer">View Certificate</a></div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="card fade-in" style="animation-delay:.14s" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <p class="muted">Send a message — or use the mailto link if you prefer.</p>
+
+        <div style="display:grid; grid-template-columns: 1fr; gap:12px; margin-top:12px">
+          <div class="card" style="padding:12px">
+            <form id="contact-form" method="POST" action="https://formspree.io/f/mgvlyedd">
+              <!-- Replace {your-id} with your Formspree form ID (free) -->
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required placeholder="Your full name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@example.com" />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Write a short message"></textarea>
+              </div>
+
+              <div style="display:flex; gap:8px; align-items:center">
+                <button type="submit" class="btn">Send Message</button>
+                <a class="btn ghost" href="mailto:krishnarj2711@gmail.com">Email Instead</a>
+              </div>
+            </form>
+          </div>
+
+          <div class="card" style="padding:12px">
+            <p style="margin:0 0 6px"><strong>Direct contact</strong></p>
+            <p style="margin:0 0 6px">Email: <a href="mailto:krishnarj2711@gmail.com">krishnarj2711@gmail.com</a></p>
+            <p style="margin:0">City: Coimbatore</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer role="contentinfo" class="fade-in" style="animation-delay:.17s">
+      <div style="margin-bottom:8px">© <span id="year"></span> Krishna Raj S — Built with HTML/CSS/JS • Hosted on GitHub Pages</div>
+      <div>
+        <a href="https://github.com/Krishna35-it" target="_blank" rel="noopener noreferrer">GitHub</a> •
+        <a href="https://www.linkedin.com/in/krishna-raj-9478b333b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Small interactive bits: set year, smooth scroll, accessible focus outline for keyboard users
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a.nav-link').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+          el.setAttribute('tabindex','-1'); // allow focus
+          el.focus({preventScroll:true});
+        }
+      });
+    });
+
+    // Tiny form handler: show a friendly message after submit (works with Formspree)
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (e)=>{
+      // Let the form submit normally to Formspree (so it can handle sending).
+      // But show a friendly note immediately for better UX.
+      const note = document.getElementById('form-note');
+      note.textContent = "Sending... If you haven't set up Formspree, the page will reload. To get form emails, replace action with your Formspree endpoint.";
+    });
+
+    // Make keyboard-visible outline only when using keyboard (prettier UX)
+    (function(){
+      function handleFirstTab(e) {
+        if (e.key === 'Tab') {
+          document.body.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+</body>
+</html>
